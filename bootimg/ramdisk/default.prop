@@ -59,4 +59,6 @@ boot.fps=30
 shutdown.fps=30
 ro.opa.eligible_device=true
 ro.config.hw_quickpoweron=true
+ro.config.hw_power_saving=true
+ro.config.hw_fast_dormancy=1
 persist.sys.shutdown.mode=hibernate

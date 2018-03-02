@@ -52,6 +52,7 @@ ro.config.dmverity=false
 ro.config.rkp=false
 ro.config.kap_default_on=false
 ro.config.kap=false
+ro.security.vaultkeeper.feature=0
 #
 # Hardware tweaks
 #

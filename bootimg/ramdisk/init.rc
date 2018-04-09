@@ -186,6 +186,9 @@ on init
     write /proc/sys/net/ipv4/conf/all/accept_redirects 0
     write /proc/sys/net/ipv6/conf/all/accept_redirects 0
 
+    # /proc/net/fib_trie leaks interface IP addresses
+    chmod 0400 /proc/net/fib_trie
+
     # Create cgroup mount points for process groups
     mkdir /dev/cpuctl
     mount cgroup none /dev/cpuctl cpu
@@ -195,15 +198,6 @@ on init
     write /dev/cpuctl/cpu.rt_period_us 1000000
     write /dev/cpuctl/cpu.rt_runtime_us 950000
 
-    mkdir /dev/cpuctl/bg_non_interactive
-    chown system system /dev/cpuctl/bg_non_interactive/tasks
-    chmod 0666 /dev/cpuctl/bg_non_interactive/tasks
-    # 5.0 %
-    write /dev/cpuctl/bg_non_interactive/cpu.shares 52
-    write /dev/cpuctl/bg_non_interactive/cpu.rt_period_us 1000000
-    # active FIFO threads will never be in BG
-    write /dev/cpuctl/bg_non_interactive/cpu.rt_runtime_us 10000
-    
     mkdir /dev/cpuctl/bg_cached
     chown system system /dev/cpuctl/bg_cached/tasks
     chown system system /dev/cpuctl/bg_cached/cpu.cfs_period_us
@@ -211,8 +205,6 @@ on init
     chmod 0666 /dev/cpuctl/bg_cached/tasks
     chmod 0664 /dev/cpuctl/bg_cached/cpu.cfs_period_us
     chmod 0664 /dev/cpuctl/bg_cached/cpu.cfs_quota_us
-    # 5.0 %
-    write /dev/cpuctl/bg_cached/cpu.shares 52
     write /dev/cpuctl/bg_cached/cpu.rt_runtime_us 700000
     write /dev/cpuctl/bg_cached/cpu.rt_period_us 1000000
     write /dev/cpuctl/bg_cached/cpu.cfs_period_us 20000
@@ -225,8 +217,6 @@ on init
     chmod 0666 /dev/cpuctl/bg_abnormal/tasks
     chmod 0664 /dev/cpuctl/bg_abnormal/cpu.cfs_period_us
     chmod 0664 /dev/cpuctl/bg_abnormal/cpu.cfs_quota_us
-    # 5.0 %
-    write /dev/cpuctl/bg_abnormal/cpu.shares 52
     write /dev/cpuctl/bg_abnormal/cpu.rt_runtime_us 700000
     write /dev/cpuctl/bg_abnormal/cpu.rt_period_us 1000000
     write /dev/cpuctl/bg_abnormal/cpu.cfs_period_us 20000

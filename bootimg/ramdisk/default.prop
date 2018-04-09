@@ -35,9 +35,9 @@ persist.sys.usb.config=mtp
 #
 # BOOTIMAGE_BUILD_PROPERTIES
 #
-ro.bootimage.build.date=Thu Dec 7 15:45:46 KST 2017
-ro.bootimage.build.date.utc=1512629146
-ro.bootimage.build.fingerprint=samsung/c9ltezh/c9ltechn:7.1.1/NMF26X/C9000ZHU1BQL3:user/test-keys
+ro.bootimage.build.date=Thu Mar 29 16:44:25 KST 2018
+ro.bootimage.build.date.utc=1522309465
+ro.bootimage.build.fingerprint=samsung/c9ltezh/c9ltechn:7.1.1/NMF26X/C9000ZHU1BRC2:user/test-keys
 #
 # Samsung Tweaks
 #

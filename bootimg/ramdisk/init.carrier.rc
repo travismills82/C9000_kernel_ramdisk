@@ -64,7 +64,7 @@ on boot
     chown system radio /sys/class/sec/sec_touchkey/sw_reset
 
 # SSWAP
-    write /proc/sys/vm/swappiness 60
+    write /proc/sys/vm/swappiness 130
 
 # Permissions for Input Booster
     chmod 0660 /sys/class/input_booster/level
@@ -120,7 +120,7 @@ on boot
 #    oneshot
 
 # SSWAP
-service swapon /sbin/sswap -s -f 1024
+service swapon /sbin/sswap -s -f 2048
     class core
     user root
     group root

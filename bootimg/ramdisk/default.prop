@@ -36,3 +36,28 @@ persist.sys.usb.config=mtp
 ro.bootimage.build.date=Fri Jul 27 16:46:20 KST 2018
 ro.bootimage.build.date.utc=1532677580
 ro.bootimage.build.fingerprint=samsung/c9ltezh/c9ltechn:8.0.0/R16NW/C9000ZHU1CRG9:user/test-keys
+#
+# Samsung Tweaks
+#
+ro.config.tima=0
+ro.config.timaversion=0
+ro.config.knox=0
+ro.securestorage.knox=false
+ro.securestorage.support=false
+ro.security.mdpp.ux=Disabled
+wlan.wfd.hdcp=disable
+ro.config.dmverity=false
+ro.config.rkp=false
+ro.config.kap_default_on=false
+ro.config.kap=false
+ro.security.vaultkeeper.feature=0
+#
+# Hardware tweaks
+#
+boot.fps=30
+shutdown.fps=30
+ro.opa.eligible_device=true
+ro.config.hw_quickpoweron=true
+ro.config.hw_power_saving=true
+ro.config.hw_fast_dormancy=1
+persist.sys.shutdown.mode=hibernate

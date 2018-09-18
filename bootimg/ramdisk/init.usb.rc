@@ -8,8 +8,6 @@ on post-fs-data
     chmod 0660 /sys/class/android_usb/android0/f_mass_storage/lun/file
     chown system system /sys/class/android_usb/android0/f_rndis/ethaddr
     chmod 0660 /sys/class/android_usb/android0/f_rndis/ethaddr
-    chown system system /sys/class/android_usb/android0/f_rndis_qc/ethaddr
-    chmod 0660 /sys/class/android_usb/android0/f_rndis_qc/ethaddr
     mkdir /data/misc/adb 02750 system shell
     mkdir /data/adb 0700 root root
 

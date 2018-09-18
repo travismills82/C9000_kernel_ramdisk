@@ -32,21 +32,6 @@ on fs
     mkdir /dev/validity 0770 system system
     mkdir /data/validity 0770 system system
 
-# FINGERPRINT FRAMEWORK : starts fingerprintd
-service fingerprintd /system/bin/fingerprintd
-    class late_start
-    user system
-    group system
-
-# IMS stack for IMS
-service imsd /system/bin/imsd
-    class main
-    socket imsd stream 0660 system system
-    user root
-    group system radio net_raw inet net_admin
-
-on boot
-
 # SVC LED samsung specific
     chown system system /sys/class/sec/led/led_r
     chown system system /sys/class/sec/led/led_g
@@ -56,6 +41,14 @@ on boot
     chown system system /sys/class/sec/led/led_brightness
     chown system system /sys/class/sec/led/led_lowpower
 
+# FINGERPRINT FRAMEWORK : starts fingerprintd
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    user system
+    group system
+
+on boot
+
 # permission for Input Device(Touchkey).
     chown radio system /sys/class/sec/sec_touchkey/touch_sensitivity
     chown radio system /sys/class/sec/sec_touchkey/touchkey_firm_update
@@ -64,7 +57,7 @@ on boot
     chown system radio /sys/class/sec/sec_touchkey/sw_reset
 
 # SSWAP
-    write /proc/sys/vm/swappiness 60
+    write /proc/sys/vm/swappiness 130
 
 # Permissions for Input Booster
     chmod 0660 /sys/class/input_booster/level
@@ -106,13 +99,6 @@ on boot
 
 #MST HW Support
     setprop ro.mst.support 0
-	
-#SLocation
-	service cellgeofenced /system/bin/cellgeofenced
-		class main
-		socket cellgeofence seqpacket 0660 gps system
-		user gps
-		group system inet
 
 #Private Mode
 #    service privatemode /system/bin/sdcard -r /data/privatemode /mnt/shell/privatemode 1000 1000
@@ -120,7 +106,7 @@ on boot
 #    oneshot
 
 # SSWAP
-service swapon /sbin/sswap -s -f 1024
+service swapon /sbin/sswap -s -f 2048
     class core
     user root
     group root
